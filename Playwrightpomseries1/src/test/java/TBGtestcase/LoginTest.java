@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 
 import BaseTest.Basetestcase;
 import TBGPage.PlaywrightFactory;
@@ -26,6 +27,7 @@ public class LoginTest extends Basetestcase  {
 				    	
 					    String tittle=loginpage.verifyTittle();
 					    Assert.assertEquals(tittle,"WebaccessApp");
+					    //test.log(Status.PASS,tittle);
 					    if(tittle.equals("WebaccessApp"))
 					    {
 					    	System.out.println("passed");

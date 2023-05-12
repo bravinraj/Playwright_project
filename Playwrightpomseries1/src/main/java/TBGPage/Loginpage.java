@@ -1,10 +1,13 @@
 package TBGPage;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import com.microsoft.playwright.Page;
 
 public class Loginpage {
 	
-	
+	ExtentTest test;
+	ExtentReports extent;
 	private Page page;
 	//static Properties pro;
 	String Employer="//button[text()='Employers']";
@@ -26,6 +29,7 @@ public class Loginpage {
 	public String verifyTittle() 
 		{
 			String tittle=page.title();
+			//test=extent.createTest("Test Case 1\", \"The test case 1 has passed");
 			return tittle;
 		}
 	

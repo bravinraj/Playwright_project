@@ -10,7 +10,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 
 import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.microsoft.playwright.Page;
 
 import TBGPage.Loginpage;
@@ -24,6 +26,8 @@ public class Basetestcase {
 	     protected Properties property;
 		 Page page;
 		 ExtentReports extent;
+		 ExtentSparkReporter extentspark;
+		 ExtentTest test;
 		 
 		@BeforeTest
 		public void setup()
@@ -32,11 +36,26 @@ public class Basetestcase {
 		    property=pf.intproperties();
 			page = pf.initbrowser(property);
 			loginpage=new Loginpage(page);
+		    extentspark=new ExtentSparkReporter(System.getProperty("user.dir") +"/test-output/testReport.html");
+		    extent=new ExtentReports();
+		    test=extent.createTest("Basetestcase");
+		    extent.attachReporter(extentspark);
+		   
+		  
+		    //config
+		    extentspark.config().setTimelineEnabled(true);
+		    extentspark.config().setDocumentTitle("Simple Automation Report");
+		    extentspark.config().setReportName("TBG Report");
+		    extentspark.config().setTheme(Theme.STANDARD);
+		    extentspark.config().setTimeStampFormat("EEEE, MMMM dd, yyyy, hh:mm a '('zzz')'");
+		    
+		    
 		}
 		@AfterTest
 		public void teardown()
 		{	
 		 page.context().browser().close();
+		 extent.flush();
 		}
 	
 	}
