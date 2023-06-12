@@ -5,8 +5,8 @@
     <classes>
       <class name="TBGtestcase.LoginTest">
         <methods>
+          <include name="logout"/>
           <include name="setup"/>
-          <include name="verifytittle"/>
           <include name="teardown"/>
         </methods>
       </class> <!-- TBGtestcase.LoginTest -->
